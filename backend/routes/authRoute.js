@@ -1,10 +1,10 @@
 import express from "express";
 import { register } from "../controllers/authController.js";
+import { optionalUpload } from "../middlewares/optionalUpload.js";
 
-//Create a new router
 const router = express.Router();
 
-//creating api end point for register
-router.post("/register", register);
+// POST /api/auth/register
+router.post('/register', optionalUpload, register);
 
 export default router;

@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    image: {
+        type: String,
+        default: "https://res.cloudinary.com/djg9iitcl/image/upload/v1630426754/placeholder-image_ufjv4t.png"
+    },
     isAdmin: {
         type: Boolean,
         default: false,
