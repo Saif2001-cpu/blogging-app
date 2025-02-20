@@ -30,8 +30,12 @@ const Register = () => {
         data.append('image', formData.image);
 
         try {
+
             const response = await axios.post('http://localhost:3000/api/auth/register', data);
+
             const result = response.data;
+
+            window.location.href = '/login';
 
             if (response.status === 200) {
                 alert('Registration successful!');

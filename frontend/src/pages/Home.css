@@ -1,0 +1,16 @@
+.navbar-nav {
+    flex-direction: row;
+}
+
+.nav-item {
+    margin-right: 15px;
+}
+
+.form-control {
+    width: 250px;
+}
+
+.btn-outline-primary,
+.btn-outline-success {
+    margin-left: 10px;
+}
