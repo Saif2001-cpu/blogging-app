@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
 
@@ -31,27 +33,28 @@ function Login() {
             });
 
             // Store the token in local storage
-            localStorage.setItem('token', response.data.token);
+            sessionStorage.setItem('token', response.data.token);
             // Redirect to the dashboard or home page
             window.location.href = '/home';
 
             console.log(response);
             if (response.status === 200) {
-                alert('Login successful!');
+                toast.success('Login successful!');
             } else {
-                alert('Login failed!');
+                toast.error('Login Failed!');
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('Failed to submit form.');
+            toast.error('Login Failed!');
         }
     };
 
     return (
 
         <form className="login-form" style={{
-            margin: "50px auto", padding: "30px", maxWidth: "400px",
-            backgroundColor: "#fff", borderRadius: "15px", boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)"
+            margin: "50px auto", padding: "30px", maxWidth: "400px", display: "flex", flexDirection: "column",
+            alignItems: "center",
+            backgroundColor: "#fef", borderRadius: "15px", boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)"
         }}>
 
             <h2>Login</h2>
@@ -65,7 +68,9 @@ function Login() {
                 <input type="password" name="password" className="form-control" onChange={handleChange} />
             </div>
             <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+            <ToastContainer />
         </form>
+
     )
 };
 

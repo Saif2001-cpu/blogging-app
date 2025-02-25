@@ -5,6 +5,8 @@ import PublishArticle from "./Publish.article.js";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 import './Home.css';
 
@@ -21,6 +23,14 @@ function Home() {
             .catch((err) => console.error("Error:", err));
     }, []);
 
+    const navigate = useNavigate();
+
+    const handlelogout = () => {
+        sessionStorage.removeItem('token');
+        navigate('/login');
+    }
+
+
     return (
 
         <div className="Home">
@@ -34,6 +44,11 @@ function Home() {
                             <li className="nav-item">
                                 <button className="btn btn-outline-primary" onClick={() => setShowEditor(!showEditor)}>
                                     Publish Article
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className="btn btn-outline-danger" onClick={handlelogout}>
+                                    Logout
                                 </button>
                             </li>
                         </ul>
